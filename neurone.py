@@ -34,4 +34,8 @@ def neuroneLayerExample():
     
     return output
 
+e = neuroneExample()
+
+
+print(e)
 
