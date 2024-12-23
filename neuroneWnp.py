@@ -30,7 +30,8 @@ def exampleNeurone():
 
 def exampleNeuroneLayer():
 
-    inputs = [1, 2, 3, 4]
+    inputs = [[1, 2, 3, 4],
+              [11, 22, 33, 44]]
 
     weights = [[0.2, 0.4, -0.7, 0.9],
                [0.5, 0.9, 0.4, 0.3],
@@ -41,6 +42,28 @@ def exampleNeuroneLayer():
 
     return np.dot(inputs, np.array(weights).T) + biases
 
+# For this, I want to see if writing it in wij is better than wji
+def neuroneLayerDiffNotation():
+
+    inputs = [[1, 2, 3, 4],
+              [11, 22, 33, 44]]
+
+    weights = [[0.2, 0.4, -0.7, 0.9],
+               [0.5, 0.9, 0.4, 0.3],
+               [-0.4, -0.9, 0.9, 0.8],
+               [0.5, 0.9, 0.4, 0.3]]
+
+    biases = [0.3, 0.4, 0.5, 0.6]
+
+    return  np.dot(weights, np.array(inputs).T) + np.array(biases).reshape(-1, 1)
+
+
 x = exampleNeuroneLayer()
 
-print(x) 
+print(x)
+
+y = neuroneLayerDiffNotation()
+
+print(y)
+
+# I've come to the conclusion that wji is better, as each output is represented as a row, and no reshaping is required
