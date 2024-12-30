@@ -10,16 +10,20 @@ class DenseLayer:
     # (num input, num output)
     def __init__(self, numInputs, numNeurones):
         
-        self.weights = np.random.randint(numInputs, numNeurones)
+        self.weights = np.random.randn(numInputs, numNeurones)
         
         # Zeros makes every item in the array a zero
-        self.bias = np.zeros(1, numNeurones)
+        self.bias = np.zeros((1, int(numNeurones)))
     
     def forward(self, inputs):
 
         # This essentially does what we were doing by hand in the previous file
         # This output will be used as an input for the next layer
         self.output = np.dot(inputs, self.weights) + self.bias
+        return self.output
+    
+    def getOutput(self):
+        print(self.output)
 
 inputs = np.random.randint(1, 5)
 dense1 = DenseLayer(1, 5)
